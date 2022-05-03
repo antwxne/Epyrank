@@ -4,6 +4,15 @@
 
 Script to rank EPITECH students by promotion using GPA and export it to an .xlsx file.
 
+## Usage
+
+```shell
+docker-compose build
+docker-compose up
+#or if you want to see the progress bar
+docker-compose run epyrank
+```
+
 ## Requirements
 
 - Docker
