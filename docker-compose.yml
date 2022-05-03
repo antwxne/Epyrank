@@ -6,5 +6,6 @@ services:
     volumes:
       - ./config:/app/config
       - ./sources:/app/sources
+      - ./data:/app/data
     env_file:
       - .env
