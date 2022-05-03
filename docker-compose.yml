@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  epyrank:
+    build: .
+    container_name: epyrank
+    volumes:
+      - ./config:/app/config
+      - ./sources:/app/sources
+    env_file:
+      - .env
