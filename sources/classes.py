@@ -10,7 +10,7 @@ class User:
         self.login: str = user_infos["login"]
         self.firstname: str = user_infos["firstname"]
         self.lastname: str = user_infos["lastname"]
-        self.city: str = user_infos["location"]
+        self.city: str = user_infos["location"].replace("/", "-")
         self.gpa: int = user_infos["gpa"][0]["gpa"]
         self.year: str = os.getenv("year")
 

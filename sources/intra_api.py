@@ -5,6 +5,14 @@ from requests import Response
 import sources.constants as constants
 import os
 
+COURS_REF = {
+    "Tek1": "bachelor/classic",
+    "Tek2": "bachelor/classic",
+    "Tek3": "bachelor/classic",
+    "Tek4": "master/classic",
+    "Tek5": "master/classic"
+}
+
 
 class IntraApi:
     def __init__(self):
@@ -26,12 +34,21 @@ class IntraApi:
         response: Response = self.session.get(url)
         return response.json()
 
-    def get_trombi(self, cities_params: str, year: str, promo: str) -> dict:
+    def get_trombi(self, cities_params: str, year: str, promo: str) -> list:
+        cours: str = COURS_REF[promo]
         cities: str = IntraApi.concat_all_cities() if cities_params == "All" else IntraApi.concat_cities(
             cities_params.split(","))
-        url: str = f'https://intra.epitech.eu/user/filter/user?format=json&location={cities}&year={year}&active=true&promo={promo}&offset=0'
-        response: Response = self.session.get(url)
-        return response.json()
+        dest = []
+        offset: int = 0
+        while True:
+            url: str = f'https://intra.epitech.eu/user/filter/user?format=json&location={cities}&year={year}&active=true&promo={promo}&offset={offset}&course={cours}'
+            response: Response = self.session.get(url)
+            tmp = response.json()
+            offset += len(tmp["items"])
+            dest.extend(tmp["items"])
+            if len(dest) >= tmp["total"]:
+                break
+        return dest
 
 
 API: IntraApi = IntraApi()

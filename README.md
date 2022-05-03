@@ -8,6 +8,15 @@
 
 ## Configuration
 
+Template:
+```text
+autologin=
+cities=
+year=
+promo=
+```
+
+
 ### Autologin
 
 Place your autologin link in the `.env` file.

@@ -4,7 +4,6 @@ services:
     build: .
     container_name: epyrank
     volumes:
-      - ./config:/app/config
       - ./sources:/app/sources
       - ./data:/app/data
     env_file:
