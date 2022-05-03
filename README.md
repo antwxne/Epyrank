@@ -1,5 +1,9 @@
 # Epyrank
 
+## Description
+
+Script to rank EPITECH students by promotion using GPA and export it to an .xlsx file.
+
 ## Requirements
 
 - Docker
